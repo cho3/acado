@@ -32,6 +32,7 @@ CMAKE_MINIMUM_REQUIRED( VERSION 3.5 )
 #
 PROJECT( acado CXX C )
 
+find_package(ament_cmake REQUIRED)
 #
 # Project version information
 #
@@ -272,6 +273,7 @@ INSTALL(
 		${INSTALL_DATA_DIR}/external_packages
 )
 
+ament_export_include_directories(include)
 #
 # Configure and install CMake package configuration file
 #
@@ -512,3 +514,15 @@ ENDIF( ACADO_WITH_TESTING )
 IF( ACADO_INTERNAL )
 	ADD_SUBDIRECTORY( experimental )
 ENDIF( ACADO_INTERNAL )
+
+# Ament commands must happen in the same scope
+IF ( ACADO_BUILD_STATIC )
+  ament_export_libraries(acado_toolkit)
+ENDIF()
+
+IF( ACADO_BUILD_SHARED )
+  ament_export_libraries(acado_toolkit_s)
+ENDIF()
+
+ament_package(
+  CONFIG_EXTRAS "acado_cmake-extras.cmake")
