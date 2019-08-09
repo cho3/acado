@@ -171,5 +171,5 @@ ENDIF()
 #
 ################################################################################
 
-INCLUDE( CppLint )
+INCLUDE( ${PROJECT_SOURCE_DIR}/cmake/CppLint.cmake )
 ADD_STYLE_CHECK_TARGET(lint ${ACADO_SOURCES})

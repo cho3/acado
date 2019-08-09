@@ -23,14 +23,14 @@
 ################################################################################
 
 #
-# Minimum required version of cmake 
+# Minimum required version of cmake, 3.5 to support ament
 #
-CMAKE_MINIMUM_REQUIRED( VERSION 2.8 )
+CMAKE_MINIMUM_REQUIRED( VERSION 3.5 )
 
 #
 # Project name and programming languages used
 #
-PROJECT( ACADO CXX C )
+PROJECT( acado CXX C )
 
 #
 # Project version information
@@ -91,7 +91,7 @@ ENDIF()
 #
 # Enable building of ...
 #
-OPTION( ACADO_WITH_EXAMPLES "Building ACADO examples" ON )
+OPTION( ACADO_WITH_EXAMPLES "Building ACADO examples" OFF )
 
 #
 # Compilation of testing suite
@@ -111,7 +111,7 @@ OPTION( ACADO_INTERNAL "Select building of ACADO internal stuff" OFF )
 #
 # Compile only the code generation tool
 #
-OPTION( ACADO_BUILD_CGT_ONLY "Build only the code generation tool" OFF )
+OPTION( ACADO_BUILD_CGT_ONLY "Build only the code generation tool" ON )
 
 #
 # Build type
@@ -167,7 +167,7 @@ ENDIF( )
 #
 # Compiler options are in separate file
 #
-INCLUDE( CompilerOptions )
+INCLUDE( ${PROJECT_SOURCE_DIR}/cmake/CompilerOptions.cmake )
 
 ################################################################################
 #
@@ -258,7 +258,7 @@ INSTALL(
 	DIRECTORY
 		external_packages/eigen3
 	DESTINATION
-		${INSTALL_INCLUDE_DIR}/external_packages
+		include/external_packages
 )
 
 #
@@ -317,24 +317,24 @@ SET( ACADO_INSTALL_QPOASES_EMBEDDED_INC_DIRS
 	${CMAKE_INSTALL_PREFIX}/${INSTALL_DATA_DIR}/external_packages/qpoases/SRC
 )
 
-CONFIGURE_FILE(
-	"${PROJECT_SOURCE_DIR}/cmake/ACADOConfig.cmake.in"
-	"${PROJECT_BINARY_DIR}/ACADOConfig.cmake"
-	@ONLY
-)
-INSTALL(
-	FILES
-		${PROJECT_BINARY_DIR}/ACADOConfig.cmake
-	DESTINATION
-		${INSTALL_CMAKE_DIR}
-)
-INSTALL(
-	FILES
-		${PROJECT_SOURCE_DIR}/cmake/FindACADO.cmake
-		${PROJECT_SOURCE_DIR}/cmake/UseACADO.cmake
-	DESTINATION
-		${INSTALL_CMAKE_DIR}
-)
+# CONFIGURE_FILE(
+#   "${PROJECT_SOURCE_DIR}/cmake/ACADOConfig.cmake.in"
+#   "${PROJECT_BINARY_DIR}/ACADOConfig.cmake"
+#   @ONLY
+# )
+# INSTALL(
+#   FILES
+#     ${PROJECT_BINARY_DIR}/ACADOConfig.cmake
+#   DESTINATION
+#     ${INSTALL_CMAKE_DIR}
+# )
+# INSTALL(
+#   FILES
+#     ${PROJECT_SOURCE_DIR}/cmake/FindACADO.cmake
+#     ${PROJECT_SOURCE_DIR}/cmake/UseACADO.cmake
+#   DESTINATION
+#     ${INSTALL_CMAKE_DIR}
+# )
 
 ################################################################################
 #
@@ -348,9 +348,10 @@ CONFIGURE_FILE(
     IMMEDIATE @ONLY
 )
 
-ADD_CUSTOM_TARGET( uninstall
-    COMMAND ${CMAKE_COMMAND} -P ${CMAKE_CURRENT_BINARY_DIR}/ACADOUninstall.cmake
-)
+# Error: target uninstall already used
+# ADD_CUSTOM_TARGET( uninstall
+#     COMMAND ${CMAKE_COMMAND} -P ${CMAKE_CURRENT_BINARY_DIR}/ACADOUninstall.cmake
+# )
 
 ################################################################################
 #
