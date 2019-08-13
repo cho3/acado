@@ -197,7 +197,8 @@ ADD_SUBDIRECTORY( acado )
 #
 ################################################################################
 
-IF (NOT ACADO_BUILD_CGT_ONLY)
+# External libraries are needed to for generated code to link against
+# IF (NOT ACADO_BUILD_CGT_ONLY)
 	#
 	# Build qpOASES library
 	#
@@ -207,7 +208,7 @@ IF (NOT ACADO_BUILD_CGT_ONLY)
 	# Build csparse library
 	#
 	ADD_SUBDIRECTORY( ./external_packages/csparse )
-ENDIF()
+  # ENDIF()
 
 #
 # Build (a part of) CasADi library

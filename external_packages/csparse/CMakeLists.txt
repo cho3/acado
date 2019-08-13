@@ -19,4 +19,4 @@ FILE( GLOB CSPARSE_HEADERS *.h )
 #
 # Make static & shared libraries
 #
-ADD_LIBRARY( acado_csparse STATIC ${CSPARSE_SOURCES} )
+ADD_LIBRARY( acado_csparse SHARED ${CSPARSE_SOURCES} )

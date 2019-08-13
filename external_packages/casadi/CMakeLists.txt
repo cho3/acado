@@ -19,4 +19,4 @@ FILE( GLOB ACADO_CASADI_HEADERS ${CMAKE_CURRENT_SOURCE_DIR}/symbolic/*.hpp )
 #
 # Make static libraries
 #
-ADD_LIBRARY( acado_casadi STATIC ${ACADO_CASADI_SOURCES} )
+ADD_LIBRARY( acado_casadi SHARED ${ACADO_CASADI_SOURCES} )
