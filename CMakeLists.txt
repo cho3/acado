@@ -317,6 +317,13 @@ SET( ACADO_INSTALL_QPOASES_EMBEDDED_INC_DIRS
 	${CMAKE_INSTALL_PREFIX}/${INSTALL_DATA_DIR}/external_packages/qpoases/SRC
 )
 
+# Compile library for generated code to link against
+ADD_LIBRARY(acado_qpoases_embedded SHARED
+  ${ACADO_INSTALL_QPOASES_EMBEDDED_SOURCES})
+TARGET_INCLUDE_DIRECTORIES(acado_qpoases_embedded PRIVATE
+  ${CMAKE_INSTALL_PREFIX}/${INSTALL_DATA_DIR}/external_packages/qpoases/INCLUDE)
+
+
 # CONFIGURE_FILE(
 #   "${PROJECT_SOURCE_DIR}/cmake/ACADOConfig.cmake.in"
 #   "${PROJECT_BINARY_DIR}/ACADOConfig.cmake"
