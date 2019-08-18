@@ -270,6 +270,12 @@ INSTALL(
 	DESTINATION
 		${INSTALL_DATA_DIR}/external_packages
 )
+INSTALL(
+	DIRECTORY
+		external_packages/qpoases3
+	DESTINATION
+		${INSTALL_DATA_DIR}/external_packages
+)
 
 #
 # Configure and install CMake package configuration file

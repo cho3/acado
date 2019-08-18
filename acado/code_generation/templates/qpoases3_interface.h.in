@@ -26,7 +26,7 @@
 /** Print level for qpOASES. */
 #define QPOASES_PRINTLEVEL @PRINT_LEVEL@
 /** The value of EPS */
-#define QPOASES_EPS        @EPS@
+// #define QPOASES_EPS        @EPS@
 /** Internally used floating point type */
 typedef @REAL_T@ real_t;
 
