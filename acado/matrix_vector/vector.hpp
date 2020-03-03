@@ -65,15 +65,15 @@ public:
 
 	/** Constructor from any other Eigen::MatrixBase derived class. */
 	template<typename OtherDerived>
-	inline GenericVector(const Eigen::MatrixBase<OtherDerived>& other) : Base( other ) {}
+	GenericVector(const Eigen::MatrixBase<OtherDerived>& other) : Base( other ) {}
 
 	/** Constructor from any other Eigen::ReturnByValue derived class. */
 	template<typename OtherDerived>
-	inline GenericVector(const Eigen::ReturnByValue<OtherDerived>& other) : Base( other ) {}
+	GenericVector(const Eigen::ReturnByValue<OtherDerived>& other) : Base( other ) {}
 
 	/** Constructor from any other Eigen::EigenBase derived class. */
 	template<typename OtherDerived>
-	inline GenericVector(const Eigen::EigenBase<OtherDerived>& other) : Base( other ) {}
+	GenericVector(const Eigen::EigenBase<OtherDerived>& other) : Base( other ) {}
 
 	/** @}
 	 *  \endinternal
