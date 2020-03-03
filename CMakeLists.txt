@@ -305,29 +305,29 @@ IF ( ACADO_BUILD_SHARED )
 	)
 ENDIF()
 
-SET( ACADO_INSTALL_QPOASES_EMBEDDED_SOURCES
-	${CMAKE_INSTALL_PREFIX}/${INSTALL_DATA_DIR}/external_packages/qpoases/SRC/Bounds.cpp
-	${CMAKE_INSTALL_PREFIX}/${INSTALL_DATA_DIR}/external_packages/qpoases/SRC/CyclingManager.cpp 
-	${CMAKE_INSTALL_PREFIX}/${INSTALL_DATA_DIR}/external_packages/qpoases/SRC/MessageHandling.cpp
-	${CMAKE_INSTALL_PREFIX}/${INSTALL_DATA_DIR}/external_packages/qpoases/SRC/QProblem.cpp
-	${CMAKE_INSTALL_PREFIX}/${INSTALL_DATA_DIR}/external_packages/qpoases/SRC/Utils.cpp
-	${CMAKE_INSTALL_PREFIX}/${INSTALL_DATA_DIR}/external_packages/qpoases/SRC/Constraints.cpp
-	${CMAKE_INSTALL_PREFIX}/${INSTALL_DATA_DIR}/external_packages/qpoases/SRC/Indexlist.cpp	     
-	${CMAKE_INSTALL_PREFIX}/${INSTALL_DATA_DIR}/external_packages/qpoases/SRC/QProblemB.cpp
-	${CMAKE_INSTALL_PREFIX}/${INSTALL_DATA_DIR}/external_packages/qpoases/SRC/SubjectTo.cpp
-	${CMAKE_INSTALL_PREFIX}/${INSTALL_DATA_DIR}/external_packages/qpoases/SRC/EXTRAS/SolutionAnalysis.cpp
-)
-SET( ACADO_INSTALL_QPOASES_EMBEDDED_INC_DIRS
-	${CMAKE_INSTALL_PREFIX}/${INSTALL_DATA_DIR}/external_packages/qpoases/
-	${CMAKE_INSTALL_PREFIX}/${INSTALL_DATA_DIR}/external_packages/qpoases/INCLUDE
-	${CMAKE_INSTALL_PREFIX}/${INSTALL_DATA_DIR}/external_packages/qpoases/SRC
-)
+# SET( ACADO_INSTALL_QPOASES_EMBEDDED_SOURCES
+#   ${CMAKE_INSTALL_PREFIX}/${INSTALL_DATA_DIR}/external_packages/qpoases/SRC/Bounds.cpp
+#   ${CMAKE_INSTALL_PREFIX}/${INSTALL_DATA_DIR}/external_packages/qpoases/SRC/CyclingManager.cpp 
+#   ${CMAKE_INSTALL_PREFIX}/${INSTALL_DATA_DIR}/external_packages/qpoases/SRC/MessageHandling.cpp
+#   ${CMAKE_INSTALL_PREFIX}/${INSTALL_DATA_DIR}/external_packages/qpoases/SRC/QProblem.cpp
+#   ${CMAKE_INSTALL_PREFIX}/${INSTALL_DATA_DIR}/external_packages/qpoases/SRC/Utils.cpp
+#   ${CMAKE_INSTALL_PREFIX}/${INSTALL_DATA_DIR}/external_packages/qpoases/SRC/Constraints.cpp
+#   ${CMAKE_INSTALL_PREFIX}/${INSTALL_DATA_DIR}/external_packages/qpoases/SRC/Indexlist.cpp	     
+#   ${CMAKE_INSTALL_PREFIX}/${INSTALL_DATA_DIR}/external_packages/qpoases/SRC/QProblemB.cpp
+#   ${CMAKE_INSTALL_PREFIX}/${INSTALL_DATA_DIR}/external_packages/qpoases/SRC/SubjectTo.cpp
+#   ${CMAKE_INSTALL_PREFIX}/${INSTALL_DATA_DIR}/external_packages/qpoases/SRC/EXTRAS/SolutionAnalysis.cpp
+# )
+# SET( ACADO_INSTALL_QPOASES_EMBEDDED_INC_DIRS
+#   ${CMAKE_INSTALL_PREFIX}/${INSTALL_DATA_DIR}/external_packages/qpoases/
+#   ${CMAKE_INSTALL_PREFIX}/${INSTALL_DATA_DIR}/external_packages/qpoases/INCLUDE
+#   ${CMAKE_INSTALL_PREFIX}/${INSTALL_DATA_DIR}/external_packages/qpoases/SRC
+# )
 
-# Compile library for generated code to link against
-ADD_LIBRARY(acado_qpoases_embedded SHARED
-  ${ACADO_INSTALL_QPOASES_EMBEDDED_SOURCES})
-TARGET_INCLUDE_DIRECTORIES(acado_qpoases_embedded PRIVATE
-  ${CMAKE_INSTALL_PREFIX}/${INSTALL_DATA_DIR}/external_packages/qpoases/INCLUDE)
+# # Compile library for generated code to link against
+# ADD_LIBRARY(acado_qpoases_embedded SHARED
+#   ${ACADO_INSTALL_QPOASES_EMBEDDED_SOURCES})
+# TARGET_INCLUDE_DIRECTORIES(acado_qpoases_embedded PRIVATE
+#   ${CMAKE_INSTALL_PREFIX}/${INSTALL_DATA_DIR}/external_packages/qpoases/INCLUDE)
 
 
 # CONFIGURE_FILE(
