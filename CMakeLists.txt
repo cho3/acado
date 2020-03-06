@@ -189,8 +189,9 @@ INCLUDE_DIRECTORIES(
 # Build the ACADO toolkit library
 #
 ################################################################################
-
-ADD_SUBDIRECTORY( acado )
+if (NOT ((CMAKE_CXX_COMPILER_ID MATCHES "Clang") OR (CMAKE_SYSTEM_PROCESSOR STREQUAL "aarch64")))
+  ADD_SUBDIRECTORY( acado )
+endif()
 
 ################################################################################
 #
@@ -198,6 +199,7 @@ ADD_SUBDIRECTORY( acado )
 #
 ################################################################################
 
+if (NOT ((CMAKE_CXX_COMPILER_ID MATCHES "Clang") OR (CMAKE_SYSTEM_PROCESSOR STREQUAL "aarch64")))
 # External libraries are needed to for generated code to link against
 # IF (NOT ACADO_BUILD_CGT_ONLY)
 	#
@@ -215,6 +217,7 @@ ADD_SUBDIRECTORY( acado )
 # Build (a part of) CasADi library
 #
 ADD_SUBDIRECTORY( ./external_packages/casadi )
+endif()
 
 ################################################################################
 #
@@ -491,38 +494,40 @@ CONFIGURE_FILE(
 #
 ################################################################################
 
-IF( ACADO_WITH_EXAMPLES )
-	ADD_SUBDIRECTORY( examples )
-ENDIF( ACADO_WITH_EXAMPLES )
+if (NOT ((CMAKE_CXX_COMPILER_ID MATCHES "Clang") OR (CMAKE_SYSTEM_PROCESSOR STREQUAL "aarch64")))
+  IF( ACADO_WITH_EXAMPLES )
+    ADD_SUBDIRECTORY( examples )
+  ENDIF( ACADO_WITH_EXAMPLES )
 
-################################################################################
-#
-# Unit tests
-#
-################################################################################
+  ################################################################################
+  #
+  # Unit tests
+  #
+  ################################################################################
 
-IF( ACADO_WITH_TESTING )
-	ADD_SUBDIRECTORY( tests )
-ENDIF( ACADO_WITH_TESTING )
+  IF( ACADO_WITH_TESTING )
+    ADD_SUBDIRECTORY( tests )
+  ENDIF( ACADO_WITH_TESTING )
 
-################################################################################
-#
-# Internal stuff
-#
-################################################################################
+  ################################################################################
+  #
+  # Internal stuff
+  #
+  ################################################################################
 
-IF( ACADO_INTERNAL )
-	ADD_SUBDIRECTORY( experimental )
-ENDIF( ACADO_INTERNAL )
+  IF( ACADO_INTERNAL )
+    ADD_SUBDIRECTORY( experimental )
+  ENDIF( ACADO_INTERNAL )
 
-# Ament commands must happen in the same scope
-IF ( ACADO_BUILD_STATIC )
-  ament_export_libraries(acado_toolkit)
-ENDIF()
+  # Ament commands must happen in the same scope
+  IF ( ACADO_BUILD_STATIC )
+    ament_export_libraries(acado_toolkit)
+  ENDIF()
 
-IF( ACADO_BUILD_SHARED )
-  ament_export_libraries(acado_toolkit_s)
-ENDIF()
+  IF( ACADO_BUILD_SHARED )
+    ament_export_libraries(acado_toolkit_s)
+  ENDIF()
+endif()
 
 ament_package(
   CONFIG_EXTRAS "acado_cmake-extras.cmake")
